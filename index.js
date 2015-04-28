@@ -1,9 +1,14 @@
-var context = {
-    title: "My New Post",
-    body: "This is my first post!"
-}
+// Steuerung
+$(document).ready(function(){
 
-// var html    = template(context);
+    $.ajax({
+        method: 'post',
+        url: 'index.php',
+        cache: false,
+        success: function(response){
+            var daten = $.parseJSON(response);
 
-var source   = $("#entry-template").html();
-var template = Handlebars.compile(source);
+            loadenTemplate('template1.html', daten, 'fenster1');
+        }
+    });
+});
